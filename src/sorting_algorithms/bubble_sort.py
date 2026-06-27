@@ -1,5 +1,16 @@
 def bubble_sort(array_to_sort: list[int]):
-    print(array_to_sort)
+    length = len(array_to_sort)
+    did_it_swap = True
+    while did_it_swap == True:
+        did_it_swap = False
+
+        for index in range(0, length-1):
+            element1 = array_to_sort[index]
+            element2 = array_to_sort[index+1]
+            if element1 > element2:
+                print(element1, element2)
+                array_to_sort = my_swap(array_to_sort, index, index+1)
+                did_it_swap = True
 
 
 '''
