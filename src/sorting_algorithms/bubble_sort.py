@@ -91,5 +91,8 @@ def bubble_sort_variant_amy(array_to_sort: list[int]):
                 print(element1, element2)
                 array_to_sort = my_swap(array_to_sort, index, index+1)
                 did_it_swap = True
-                if element1 == element2:
-                    break
+    if did_it_swap == False:
+        print(f"Array is sorted: {array_to_sort}")
+
+
+bubble_sort_variant_amy([2, 7, 5, 10, 8, 9])
