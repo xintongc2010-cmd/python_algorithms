@@ -5,6 +5,19 @@ def my_swap(list_to_swap: list[int], index_to_swap_from: int, index_to_swap_with
     return list_to_swap
 
 
+"""
+Swap two elements in a list.
+
+Args:
+    list_to_swap: The list containing the elements to swap.
+    index_to_swap_from: The index of the first element.
+    index_to_swap_with: The index of the second element.
+
+Returns:
+    The list with the two elements swapped.
+"""
+
+
 def cocktail_sort(array_to_sort: list[int]):
     length = len(array_to_sort)
     while True:
@@ -32,6 +45,21 @@ def cocktail_sort(array_to_sort: list[int]):
     return array_to_sort
 
 
+"""
+Sort a list of integers into ascending order using cocktail sort.
+
+The function repeatedly passes through the list forwards and backwards,
+swapping adjacent elements that are in the wrong order. It stops when a
+complete cycle is made without any swaps.
+
+Args:
+    array_to_sort: The list of integers to sort.
+
+Returns:
+    The sorted list.
+"""
+
+
 def main():
     my_list = [3, 100, 1, 2, 4, 5, 6, 7, 8, 9]
     print(f"Unsorted list: {my_list}")
@@ -40,3 +68,11 @@ def main():
 
 
 main()
+
+
+"""
+Run the program and demonstrate the bubble sort algorithm.
+
+Creates an example list, sorts it using the cocktail sort function,
+and displays the results.
+"""
