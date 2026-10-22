@@ -9,10 +9,21 @@ class searching_algorithms:
     def searching(self) -> None:
         pass
 
+    """
+    Base class for searching algorithms.
+
+    Stores the list to search, the target number, and the index where
+    the target is found.
+    """
+
 
 class linear_search(searching_algorithms):
     def __init__(self, list_to_search: list[int], target_number: int):
         super().__init__(list_to_search, target_number)
+
+    """
+    Search for a target value using the linear search algorithm.
+    """
 
     def searching(self):
         found = False
@@ -30,10 +41,25 @@ class linear_search(searching_algorithms):
         if found == False:
             print("Not found")
 
+    """
+    Search through the list sequentially for the target number.
+
+    The algorithm checks each element from the beginning of the list
+    until the target is found or the end of the list is reached.
+
+    If found, the target's index is stored in target_index.
+    """
+
 
 class binary_search(searching_algorithms):
     def __init__(self, list_to_search: list[int], target_number: int):
         super().__init__(list_to_search, target_number)
+
+    """
+    Search for a target value using the binary search algorithm.
+
+    The list must be sorted before binary search is used.
+    """
 
     def searching(self):
         found = False
@@ -57,11 +83,27 @@ class binary_search(searching_algorithms):
         if found == False:
             print("Not found")
 
+    """
+    Search a sorted list for the target number using binary search.
+
+    The algorithm repeatedly checks the midpoint of the remaining
+    search area and removes half of the search area each time.
+
+    If found, the target's index is stored in target_index.
+    """
+
 
 class jump_search(searching_algorithms):
     def __init__(self, list_to_search: list[int], target_number: int, step: int = 1):
         self.step = step
         super().__init__(list_to_search, target_number)
+
+    """
+    Search for a target value using the jump search algorithm.
+
+    The algorithm moves through a sorted list in fixed-size steps before
+    searching the smaller section where the target may be located.
+    """
 
     def searching(self):
         found = False
@@ -91,6 +133,16 @@ class jump_search(searching_algorithms):
         if found == False:
             print("Not found")
 
+    """
+    Search a sorted list for the target number using jump search.
+
+    The algorithm jumps through the list using the specified step size.
+    Once it passes the possible position of the target, it searches
+    through that smaller section.
+
+    If found, the target's index is stored in target_index.
+    """
+
 
 def main():
     my_linear_search = linear_search(
@@ -110,6 +162,13 @@ def main():
     my_jump_search.searching()
     print(
         f"[Jump Search] The target number is at index: {my_jump_search.target_index}")
+
+    """
+    Demonstrate the linear, binary, and jump search algorithms.
+
+    Creates an instance of each searching class, searches for an example
+    target number, and prints the index where the target was found.
+    """
 
 
 main()
