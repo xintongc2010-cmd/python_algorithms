@@ -93,6 +93,29 @@ class binary_search(searching_algorithms):
     """
 
 
+class recursive_binary_search(searching_algorithms):
+    def __init__(self, list_to_search: list[int], target_number: int):
+        super().__init__(list_to_search, target_number)
+
+    def searching(self, lowerBound: int = 0, upperBound=None):
+
+        if upperBound is None:
+            upperBound = len(self.list_to_search) - 1
+            self.target_index = -1
+
+        midpoint = (lowerBound + upperBound) // 2
+
+        if self.list_to_search[midpoint] == self.target_number:
+            self.target_index = midpoint
+            yield midpoint
+
+        elif self.list_to_search[midpoint] > self.target_number:
+            yield self.searching(lowerBound, midpoint-1)
+
+        else:
+            yield self.searching(midpoint+1, upperBound)
+
+
 class jump_search(searching_algorithms):
     def __init__(self, list_to_search: list[int], target_number: int, step: int = 1):
         self.step = step
@@ -162,6 +185,12 @@ def main():
     my_jump_search.searching()
     print(
         f"[Jump Search] The target number is at index: {my_jump_search.target_index}")
+
+    my_recursive_binary_search = recursive_binary_search(
+        list_to_search=[1, 2, 4, 6, 8, 10], target_number=10)
+    my_recursive_binary_search.searching()
+    print(
+        f"[Recursive Binary Search] The target number is at index: {my_recursive_binary_search.target_index}")
 
     """
     Demonstrate the linear, binary, and jump search algorithms.
