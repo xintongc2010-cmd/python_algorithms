@@ -107,13 +107,12 @@ class recursive_binary_search(searching_algorithms):
 
         if self.list_to_search[midpoint] == self.target_number:
             self.target_index = midpoint
-            yield midpoint
+            yield from midpoint
 
         elif self.list_to_search[midpoint] > self.target_number:
-            yield self.searching(lowerBound, midpoint-1)
-
+            yield from self.searching(lowerBound, midpoint-1)
         else:
-            yield self.searching(midpoint+1, upperBound)
+            yield from self.searching(midpoint+1, upperBound)
 
 
 class jump_search(searching_algorithms):
