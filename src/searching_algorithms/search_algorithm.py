@@ -98,21 +98,26 @@ class recursive_binary_search(searching_algorithms):
         super().__init__(list_to_search, target_number)
 
     def searching(self, lowerBound: int = 0, upperBound=None):
-
         if upperBound is None:
             upperBound = len(self.list_to_search) - 1
             self.target_index = -1
 
-        midpoint = (lowerBound + upperBound) // 2
+        if lowerBound > upperBound:
+            self.target_index = -1
+            return -1
 
-        if self.list_to_search[midpoint] == self.target_number:
-            self.target_index = midpoint
-            yield from midpoint
-
-        elif self.list_to_search[midpoint] > self.target_number:
-            yield from self.searching(lowerBound, midpoint-1)
         else:
-            yield from self.searching(midpoint+1, upperBound)
+            midpoint = (lowerBound + upperBound) // 2
+
+            if self.list_to_search[midpoint] == self.target_number:
+                self.target_index = midpoint
+                return midpoint
+
+            elif self.list_to_search[midpoint] > self.target_number:
+                return self.searching(lowerBound, midpoint - 1)
+
+            else:
+                return self.searching(midpoint + 1, upperBound)
 
 
 class jump_search(searching_algorithms):
